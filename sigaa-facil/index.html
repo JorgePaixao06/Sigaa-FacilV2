@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SIGAA Fácil — tutoriais independentes para estudantes da Universidade Federal do Pará (UFPA) usarem o SIGAA.">
+  <title>SIGAA Fácil | Guia do SIGAA da UFPA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SIGAA Fácil - início">
+      <span class="brand-mark">SF</span>
+      <span>SIGAA <strong>Fácil</strong></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#tutoriais">Tutoriais</a>
+      <a href="#problemas">Problemas frequentes</a>
+    </nav>
+    <a class="header-cta" href="#tutoriais">Encontrar tutorial <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span> GUIA INDEPENDENTE · UFPA</div>
+        <h1>Resolver tarefas acadêmicas<br><span>não precisa ser complicado.</span></h1>
+        <p>Encontre orientações passo a passo para realizar tarefas acadêmicas no SIGAA da Universidade Federal do Pará.</p>
+        <a class="primary-button" href="#tutoriais">Encontrar o que preciso <span>→</span></a>
+        <div class="hero-note"><span class="shield">✓</span> Orientações gratuitas, específicas para a UFPA e sem solicitar sua senha.</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-card card-top"><span class="mini-icon green">✓</span><div><b>Tarefa concluída!</b><small>Mais uma etapa finalizada</small></div></div>
+        <div class="dashboard-card">
+          <div class="dash-top"><span class="dash-dot"></span><span class="dash-dot"></span><span class="dash-dot"></span><small>SEU GUIA ACADÊMICO</small></div>
+          <div class="dash-title">Vamos por partes.</div>
+          <div class="dash-line"></div>
+          <div class="dash-step"><span class="step-check">✓</span><span>Encontre sua tarefa</span></div>
+          <div class="dash-step"><span class="step-check">2</span><span>Siga o passo a passo</span></div>
+          <div class="dash-step muted"><span class="step-check">3</span><span>Conclua com segurança</span></div>
+          <div class="dash-progress"><span></span></div>
+          <small class="progress-caption">SEU PROGRESSO</small>
+        </div>
+        <div class="floating-card card-bottom"><span class="mini-icon purple">✦</span><div><b>Sem complicação</b><small>Explicações diretas ao ponto</small></div></div>
+      </div>
+    </section>
+
+    <section class="institution-note"><div><strong>Este guia é voltado aos estudantes da UFPA.</strong><p>O SIGAA pode ter configurações diferentes em outras universidades. Para acessar o sistema, use sempre o endereço oficial da UFPA.</p></div><a class="secondary-button" href="https://sigaa.ufpa.br/sigaa/public/home.jsf" target="_blank" rel="noopener">Abrir SIGAA UFPA ↗</a></section>
+
+    <section class="search-section" id="tutoriais">
+      <div class="section-heading">
+        <div><div class="eyebrow dark">CENTRAL DE AJUDA</div><h2>O que você precisa fazer?</h2><p>Pesquise uma tarefa ou escolha uma das opções abaixo. Os caminhos seguem as orientações publicadas pela UFPA.</p></div>
+        <span class="guide-count" id="guideCount">06 GUIAS DISPONÍVEIS</span>
+      </div>
+      <label class="search-box">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Ex.: emitir atestado, fazer matrícula..." autocomplete="off">
+        <kbd>⌕</kbd>
+      </label>
+      <div class="filters" role="group" aria-label="Filtrar tutoriais">
+        <button class="filter active" data-filter="todos">Todos</button>
+        <button class="filter" data-filter="documentos">Documentos</button>
+        <button class="filter" data-filter="matricula">Matrícula</button>
+        <button class="filter" data-filter="acesso">Acesso e conta</button>
+      </div>
+      <div class="guide-grid" id="guideGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div>⌕</div><h3>Não encontramos essa tarefa</h3><p>Tente usar outras palavras ou selecionar outra categoria.</p>
+      </div>
+    </section>
+
+    <section class="help-strip" id="problemas">
+      <div class="help-icon">?</div>
+      <div><div class="eyebrow dark">PRECISA DE UMA AJUDA EXTRA?</div><h2>Está enfrentando algum problema?</h2><p>Confira orientações para dificuldades comuns de acesso e utilização do SIGAA da UFPA.</p></div>
+      <a class="secondary-button" href="#problemas-list">Ver problemas frequentes <span>→</span></a>
+    </section>
+
+    <section class="faq-section" id="problemas-list">
+      <div class="section-heading"><div><div class="eyebrow dark">RESPOSTAS RÁPIDAS</div><h2>Problemas frequentes</h2><p>Algumas situações comuns e o que você pode tentar.</p></div></div>
+      <div class="faq-list">
+        <details><summary>Não consigo entrar na minha conta <span>+</span></summary><p>Confira se está usando o endereço oficial do SIGAA da sua instituição e se seus dados de acesso foram digitados corretamente. Se o erro continuar, procure o suporte ou a secretaria acadêmica da sua instituição. Nunca compartilhe sua senha.</p></details>
+        <details><summary>Esqueci minha senha <span>+</span></summary><p>Na página oficial de acesso, procure a opção de recuperação de senha. Siga as instruções da própria instituição. Se não receber o e-mail de recuperação, verifique a caixa de spam ou entre em contato com o suporte institucional.</p></details>
+        <details><summary>Uma opção não aparece no meu SIGAA <span>+</span></summary><p>Os menus podem variar conforme a instituição, o perfil do usuário e o período acadêmico. Consulte os comunicados oficiais ou a secretaria do seu curso antes de realizar qualquer procedimento.</p></details>
+        <details><summary>O sistema apresenta erro ou fica carregando <span>+</span></summary><p>Tente atualizar a página, utilizar outro navegador ou limpar o cache. Se possível, registre a mensagem de erro e o horário em que ocorreu para informar ao suporte institucional.</p></details>
+      </div>
+    </section>
+
+    <section class="safety-note">
+      <span>🔒</span><p><strong>Sua segurança vem primeiro.</strong> O SIGAA Fácil é um guia independente, não é um serviço oficial da UFPA. Não solicitamos login, senha, matrícula ou documentos pessoais e não realizamos operações dentro do SIGAA. Confirme prazos e procedimentos nos canais oficiais da universidade.</p>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">SF</span><span>SIGAA <strong>Fácil</strong></span></a><p>Guia independente para estudantes da Universidade Federal do Pará.</p><small>Fontes oficiais: <a href="https://servicosdetic.ufpa.br/sig-ufpa/sigaa" target="_blank" rel="noopener">Manuais do SIGAA/CTIC</a> · <a href="https://ufpa.br/" target="_blank" rel="noopener">Portal UFPA</a> · <a href="https://proeg.ufpa.br/orientacoes-academicas" target="_blank" rel="noopener">Orientações acadêmicas/PROEG</a>. Consulte os canais oficiais para confirmar prazos e possíveis atualizações.</small></footer>
+
+  <div class="modal-backdrop" id="guideModal" hidden>
+    <section class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+      <div class="modal-kicker" id="modalCategory">GUIA PASSO A PASSO</div>
+      <h2 id="modalTitle"></h2><p class="modal-intro" id="modalIntro"></p>
+      <div class="guide-progress-row"><span id="progressText">0 de 0 etapas concluídas</span><strong id="progressPercent">0%</strong></div>
+      <div class="progress-track"><span id="modalProgress"></span></div>
+      <div class="steps-list" id="stepsList"></div>
+      <div class="guide-tip"><strong>Importante:</strong> os nomes dos menus podem variar entre instituições. Confira as orientações oficiais da sua universidade.</div>
+      <div class="feedback"><span>Este tutorial foi útil?</span><div><button class="feedback-btn" data-feedback="sim">👍 Sim</button><button class="feedback-btn" data-feedback="nao">👎 Não</button></div></div>
+      <p class="feedback-message" id="feedbackMessage" aria-live="polite"></p>
+    </section>
+  </div>
+</body>
+</html>
