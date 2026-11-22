@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d . -s \"{index.html,style.css,script.js,README.md}\" --nojekyll"
   },
   "homepage": "https://JorgePaixa06.github.io/Sigaa-FacilV2/",
   "keywords": [],
