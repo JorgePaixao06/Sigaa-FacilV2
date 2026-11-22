@@ -20,16 +20,21 @@ function renderGuides(){
 }
 function updateProgress(){
   const checks=[...document.querySelectorAll("#stepsList input")],done=checks.filter(c=>c.checked).length,total=checks.length,pct=total?Math.round(done/total*100):0;
+  checks.forEach(c=>c.closest(".step-item").classList.toggle("done",c.checked));
   document.getElementById("progressText").textContent=`${done} de ${total} etapas concluídas`;
   document.getElementById("progressPercent").textContent=`${pct}%`;
   document.getElementById("modalProgress").style.width=`${pct}%`;
 }
+function readProgress(id){try{return JSON.parse(localStorage.getItem(`sigaa-facil-progress-${id}`))||[]}catch(_){return []}}
+function saveProgress(id,indices){try{localStorage.setItem(`sigaa-facil-progress-${id}`,JSON.stringify(indices))}catch(_){}}
 function openGuide(id){
   currentGuide=guides.find(g=>g.id===id);if(!currentGuide)return;
   document.getElementById("modalCategory").textContent=`GUIA · ${currentGuide.categoryName.toUpperCase()}`;
   document.getElementById("modalTitle").textContent=currentGuide.title;
   document.getElementById("modalIntro").textContent=currentGuide.intro;
   document.getElementById("stepsList").innerHTML=currentGuide.steps.map((s,i)=>`<label class="step-item"><input type="checkbox" aria-label="Marcar etapa ${i+1} como concluída"><span><strong>Etapa ${i+1}.</strong> ${escapeHTML(s).replace(/(https:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</span></label>`).join("");
+  const saved=readProgress(currentGuide.id);
+  document.querySelectorAll("#stepsList input").forEach((c,i)=>{c.checked=saved.includes(i)});
   document.getElementById("feedbackMessage").textContent="";
   const tip=document.querySelector(".guide-tip");
   tip.innerHTML=`<strong>Orientação UFPA:</strong> ${escapeHTML(currentGuide.tip || "Consulte os canais oficiais da UFPA para confirmar possíveis atualizações.")}`;
@@ -40,7 +45,7 @@ grid.addEventListener("click",e=>{const card=e.target.closest("[data-id]");if(ca
 grid.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const card=e.target.closest("[data-id]");if(card){e.preventDefault();openGuide(card.dataset.id)}}});
 search.addEventListener("input",renderGuides);
 document.querySelector(".filters").addEventListener("click",e=>{const btn=e.target.closest("[data-filter]");if(!btn)return;activeFilter=btn.dataset.filter;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));renderGuides()});
-document.getElementById("stepsList").addEventListener("change",updateProgress);
+document.getElementById("stepsList").addEventListener("change",()=>{updateProgress();if(currentGuide)saveProgress(currentGuide.id,[...document.querySelectorAll("#stepsList input")].map((c,i)=>c.checked?i:-1).filter(i=>i>=0))});
 document.getElementById("modalClose").addEventListener("click",closeGuide);
 document.getElementById("guideModal").addEventListener("click",e=>{if(e.target.id==="guideModal")closeGuide()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!document.getElementById("guideModal").hidden)closeGuide()});
